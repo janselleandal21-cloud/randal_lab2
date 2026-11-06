@@ -1,37 +1,36 @@
 name: Local Server CI/CD
 
-# 1. Tukuyin kung kailan tatakbo ang workflow (triggers)
 on:
   push:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
 
-# 2. Tukuyin ang mga jobs na gagawin
 jobs:
   build-and-deploy:
-    runs-on: self-hosted  # Kailangan itugma sa iyong self-hosted runner
+    runs-on: self-hosted
 
     steps:
-    # I-checkout ang repository code papunta sa runner machine
     - name: Checkout Code
       uses: actions/checkout@v4
 
-    # Halimbawa ng step: I-check ang current directory at user
     - name: Verify Environment
       run: |
         echo "Running on server workspace:"
         pwd
         whoami
 
-    # Halimbawa: Kopyahin ang files papunta sa iyong web root (/var/www/html/randal)
     - name: Deploy to Web Directory
       run: |
-        echo "Copying files to web root..."
-        sudo cp -r * /var/www/html/randal/
+        echo "Deploying files to randal_lab2..."
+        sudo mkdir -p /var/www/html/randal/randal_lab2
+        # Kopyahin ang lahat ng laman patungo sa tamang subfolder
+        sudo cp -r . /var/www/html/randal/randal_lab2/
+        # Ayusin ang permissions para mabasa ng Apache
+        sudo chown -R randal:www-data /var/www/html/randal/randal_lab2/
+        sudo chmod -R 755 /var/www/html/randal/randal_lab2/
 
-    # Verification step
     - name: Verify Deployment
       run: |
         echo "Deployment complete!"
-        ls -la /var/www/html/randal/
+        ls -la /var/www/html/randal/randal_lab2/
