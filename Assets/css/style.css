@@ -1,0 +1,2124 @@
+:root {
+    --cinema-bg: #090e1b;
+    --cinema-surface: #111a2b;
+    --cinema-card: #141f32;
+    --cinema-border: rgba(255, 255, 255, 0.09);
+
+    --cinema-gold: #e8b85b;
+    --cinema-gold-light: #f5d58c;
+    --cinema-red: #c83d43;
+
+    --cinema-white: #f5f5f5;
+    --cinema-muted: #a5afc0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--cinema-bg);
+    color: var(--cinema-white);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    background-color: #080d17 !important;
+    border-bottom: 1px solid var(--cinema-border);
+    padding: 17px 0;
+}
+
+.navbar-brand {
+    color: var(--cinema-gold) !important;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.navbar-brand:hover {
+    color: var(--cinema-gold-light) !important;
+}
+
+.navbar .nav-link {
+    color: #d0d5df !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--cinema-gold) !important;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn-cinema-primary {
+    background: linear-gradient(
+        135deg,
+        var(--cinema-gold),
+        #c88e36
+    );
+
+    color: #17120a;
+    border: none;
+    border-radius: 7px;
+    padding: 11px 18px;
+    font-weight: 700;
+    transition: all 0.25s ease;
+}
+
+.btn-cinema-primary:hover {
+    background: var(--cinema-gold-light);
+    color: #17120a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(232, 184, 91, 0.2);
+}
+
+
+/* =========================================
+   CINEMA PAGE
+========================================= */
+
+.cinema-page {
+    min-height: 100vh;
+    background: var(--cinema-bg);
+}
+
+.cinema-container {
+    padding-top: 55px;
+    padding-bottom: 50px;
+}
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.cinema-hero {
+    min-height: 440px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 10, 20, 0.98) 0%,
+            rgba(5, 10, 20, 0.85) 45%,
+            rgba(5, 10, 20, 0.25) 100%
+        ),
+        url('../images/blue.jpg');
+
+    background-size: cover;
+    background-position: center;
+
+    border-bottom: 1px solid var(--cinema-border);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+.hero-label {
+    display: inline-block;
+    color: var(--cinema-gold);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    max-width: 680px;
+    font-size: clamp(38px, 5vw, 62px);
+    line-height: 1.12;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 span {
+    display: block;
+    color: var(--cinema-gold);
+}
+
+.hero-content p {
+    max-width: 550px;
+    color: #c2c9d5;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 27px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   CATALOG HEADING
+========================================= */
+
+.catalog-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.section-eyebrow {
+    color: var(--cinema-gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+}
+
+.catalog-heading h2 {
+    color: white;
+    font-size: 32px;
+    font-weight: 800;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.catalog-heading p {
+    color: var(--cinema-muted);
+    margin: 0;
+}
+
+.movie-count {
+    text-align: center;
+    background: var(--cinema-surface);
+    border: 1px solid var(--cinema-border);
+    border-radius: 10px;
+    padding: 12px 22px;
+    min-width: 125px;
+}
+
+.movie-count span {
+    display: block;
+    color: var(--cinema-gold);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.movie-count small {
+    color: var(--cinema-muted);
+    font-size: 11px;
+}
+
+
+/* =========================================
+   ALERT MESSAGE
+========================================= */
+
+.cinema-alert {
+    background: #172c35;
+    color: #d8f1e9;
+    border: 1px solid rgba(85, 190, 150, 0.3);
+    border-radius: 9px;
+}
+
+
+/* =========================================
+   MOVIE CARD
+========================================= */
+
+.movie-card {
+    height: 100%;
+    overflow: hidden;
+
+    background: var(--cinema-card);
+
+    border: 1px solid var(--cinema-border);
+    border-radius: 13px;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(232, 184, 91, 0.5);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   MOVIE POSTER
+========================================= */
+
+.movie-poster-wrapper {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    background: #202b3c;
+}
+
+.movie-poster {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center 20%;
+
+    transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
+}
+
+.poster-rating {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    background: rgba(5, 10, 20, 0.88);
+    color: var(--cinema-gold);
+
+    padding: 6px 10px;
+    border-radius: 5px;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.poster-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 18px;
+
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7),
+        transparent 55%
+    );
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .poster-overlay {
+    opacity: 1;
+}
+
+.poster-overlay span {
+    color: var(--cinema-gold-light);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   MOVIE CONTENT
+========================================= */
+
+.movie-content {
+    display: flex;
+    flex-direction: column;
+    padding: 21px;
+}
+
+.movie-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 13px;
+}
+
+.movie-genre {
+    color: var(--cinema-gold);
+    background: rgba(232, 184, 91, 0.1);
+
+    border: 1px solid rgba(232, 184, 91, 0.2);
+    border-radius: 5px;
+
+    padding: 5px 9px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.movie-duration {
+    color: var(--cinema-muted);
+    font-size: 12px;
+}
+
+.movie-title {
+    color: white;
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 11px;
+}
+
+.movie-description {
+    color: var(--cinema-muted);
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 67px;
+    margin-bottom: 18px;
+}
+
+.movie-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-top: 1px solid var(--cinema-border);
+    border-bottom: 1px solid var(--cinema-border);
+}
+
+.movie-price-row small {
+    color: var(--cinema-muted);
+    font-size: 11px;
+}
+
+.movie-price-row h4 {
+    color: var(--cinema-gold);
+    font-size: 23px;
+    font-weight: 800;
+    margin: 4px 0 0;
+}
+
+
+/* =========================================
+   MOVIE FORM
+========================================= */
+
+.movie-form {
+    margin-top: 17px;
+}
+
+.movie-form .form-label {
+    color: #d9dfeb;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.quantity-control {
+    display: flex;
+    gap: 10px;
+}
+
+.quantity-control input {
+    max-width: 75px;
+    background: #0c1422;
+    color: white;
+    border: 1px solid #354259;
+    border-radius: 7px;
+}
+
+.quantity-control input:focus {
+    background: #0c1422;
+    color: white;
+    border-color: var(--cinema-gold);
+    box-shadow: 0 0 0 0.2rem rgba(232, 184, 91, 0.12);
+}
+
+.quantity-control input::-webkit-inner-spin-button,
+.quantity-control input::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.quantity-control button {
+    flex: 1;
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   BOTTOM MESSAGE
+========================================= */
+
+.cinema-bottom-message {
+    text-align: center;
+
+    margin-top: 75px;
+    padding: 55px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(232, 184, 91, 0.08),
+            rgba(200, 61, 67, 0.06)
+        );
+
+    border: 1px solid var(--cinema-border);
+    border-radius: 13px;
+}
+
+.cinema-bottom-message span {
+    color: var(--cinema-gold);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.cinema-bottom-message h3 {
+    color: white;
+    font-size: 29px;
+    font-weight: 800;
+    margin: 15px 0 10px;
+}
+
+.cinema-bottom-message p {
+    color: var(--cinema-muted);
+    margin: 0;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background: #080d17;
+    color: var(--cinema-muted);
+    border-top: 1px solid var(--cinema-border);
+    font-size: 13px;
+    padding: 15px;
+}
+
+
+/* =========================================
+   RECEIPT STYLING
+========================================= */
+
+#receipt {
+    border-radius: 12px;
+}
+
+#receipt table th,
+#receipt table td {
+    padding: 12px;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 768px) {
+
+    .cinema-hero {
+        min-height: 390px;
+        background-position: center;
+    }
+
+    .hero-content {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .catalog-heading {
+        align-items: flex-start;
+    }
+
+    .catalog-heading h2 {
+        font-size: 26px;
+    }
+
+    .movie-count {
+        min-width: 95px;
+        padding: 10px;
+    }
+
+    .movie-poster-wrapper {
+        height: 380px;
+    }
+
+    .cinema-bottom-message h3 {
+        font-size: 23px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .cinema-container {
+        padding-top: 35px;
+    }
+
+    .catalog-heading {
+        flex-direction: column;
+    }
+
+    .movie-count {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .movie-count span {
+        font-size: 21px;
+    }
+
+    .movie-poster-wrapper {
+        height: 340px;
+    }
+
+    .quantity-control {
+        flex-wrap: wrap;
+    }
+
+    .quantity-control input {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .quantity-control button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   PRINT RECEIPT
+========================================= */
+
+@media print {
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    nav,
+    footer,
+    .navbar,
+    button,
+    a,
+    .btn {
+        display: none !important;
+    }
+
+    #receipt {
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    #receipt .card-body {
+        padding: 0 !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 15mm;
+    }
+
+}
+
+
+/* =========================================
+   INNER PAGES - CART, CHECKOUT, RECEIPT
+========================================= */
+
+.cinema-inner-page {
+    padding-top: 55px;
+    padding-bottom: 65px;
+}
+
+.page-heading h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.page-heading p {
+    color: var(--cinema-muted);
+}
+
+
+/* =========================================
+   SHARED INNER PAGE ELEMENTS
+========================================= */
+
+.cinema-alert {
+    border-radius: 9px;
+    margin-bottom: 25px;
+}
+
+.btn-gold {
+    border-radius: 50px !important;
+    padding: 12px 28px;
+}
+.cinema-oval-btn {
+    border-radius: 50px !important;
+    padding: 12px 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(232, 184, 91, 0.2);
+}
+
+/* Hover effect */
+.cinema-oval-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(232, 184, 91, 0.35);
+}
+
+/* Click effect */
+.cinema-oval-btn:active {
+    transform: scale(0.95);
+}
+
+.btn-outline-gold {
+    color: var(--cinema-gold);
+    border: 1px solid var(--cinema-gold);
+    background: transparent;
+    border-radius: 7px;
+    padding: 9px 14px;
+    font-weight: 700;
+}
+
+.btn-outline-gold:hover {
+    color: #17120a;
+    background: var(--cinema-gold);
+}
+
+.cinema-input {
+    background: #0c1422;
+    border: 1px solid #354259;
+    color: white;
+    border-radius: 7px;
+    padding: 11px 13px;
+}
+
+.cinema-input:focus {
+    background: #0c1422;
+    color: white;
+    border-color: var(--cinema-gold);
+    box-shadow: 0 0 0 0.2rem rgba(232, 184, 91, 0.12);
+}
+
+.cinema-input::placeholder {
+    color: #8490a3;
+}
+
+.cinema-label {
+    color: #dce2ed;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   EMPTY CART
+========================================= */
+
+.empty-cart {
+    background: var(--cinema-surface);
+    border: 1px solid var(--cinema-border);
+    border-radius: 15px;
+    padding: 65px 25px;
+    margin-top: 30px;
+}
+
+.empty-cart-icon {
+    width: 85px;
+    height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 22px;
+    background: rgba(232, 184, 91, 0.1);
+    border: 1px solid rgba(232, 184, 91, 0.2);
+    border-radius: 50%;
+    color: var(--cinema-gold);
+    font-size: 35px;
+}
+
+.empty-cart h3 {
+    color: white;
+    font-weight: 800;
+}
+
+.empty-cart p {
+    max-width: 480px;
+    margin: 12px auto;
+    color: var(--cinema-muted);
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CART PAGE
+========================================= */
+
+.cart-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.cart-section-header h4 {
+    color: white;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.cart-section-header p {
+    color: var(--cinema-muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.cart-ticket-count {
+    color: var(--cinema-gold);
+    background: rgba(232, 184, 91, 0.1);
+    border: 1px solid rgba(232, 184, 91, 0.2);
+    border-radius: 20px;
+    padding: 8px 13px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.cart-item-card {
+    background: var(--cinema-card);
+    border: 1px solid var(--cinema-border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: border-color 0.2s ease;
+}
+
+.cart-item-card:hover {
+    border-color: rgba(232, 184, 91, 0.4);
+}
+
+.cart-movie-poster {
+    width: 100%;
+    height: 175px;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: 8px;
+}
+
+.cart-poster-placeholder {
+    height: 175px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #202b3c;
+    color: var(--cinema-gold);
+    border-radius: 8px;
+    font-size: 35px;
+}
+
+.cart-movie-genre {
+    display: inline-block;
+    color: var(--cinema-gold);
+    background: rgba(232, 184, 91, 0.1);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.cart-movie-title {
+    color: white;
+    font-size: 19px;
+    font-weight: 800;
+}
+
+.cart-movie-price {
+    color: var(--cinema-gold);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.cart-movie-price small {
+    color: var(--cinema-muted);
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.cart-item-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.cart-quantity-form {
+    width: 150px;
+}
+
+.cart-quantity-form .form-label {
+    color: var(--cinema-muted);
+    font-size: 11px;
+}
+
+.cart-quantity-form input {
+    width: 85px;
+}
+
+.cart-item-actions {
+    text-align: right;
+}
+
+.cart-item-total {
+    color: var(--cinema-gold);
+    font-weight: 800;
+    margin: 5px 0;
+}
+
+.btn-remove {
+    color: #ef8585;
+    border: none;
+    padding: 4px 0;
+    font-size: 12px;
+}
+
+.btn-remove:hover {
+    color: #ff5555;
+}
+
+.continue-shopping-link {
+    display: inline-block;
+    color: var(--cinema-gold);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.continue-shopping-link:hover {
+    color: var(--cinema-gold-light);
+}
+
+
+/* =========================================
+   CART SUMMARY
+========================================= */
+
+.cart-summary-card,
+.checkout-summary-card {
+    background: var(--cinema-surface);
+    border: 1px solid var(--cinema-border);
+    border-radius: 13px;
+    padding: 25px;
+}
+
+.cart-summary-card h4,
+.checkout-summary-card h4 {
+    color: white;
+    font-weight: 800;
+    margin-top: 9px;
+}
+
+.summary-description {
+    color: var(--cinema-muted);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.cart-summary-card hr,
+.checkout-summary-card hr {
+    border-color: var(--cinema-border);
+    opacity: 1;
+    margin: 20px 0;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: #cbd2df;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.summary-line strong {
+    color: white;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.summary-total span {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.summary-total h3 {
+    color: var(--cinema-gold);
+    font-size: 25px;
+    font-weight: 800;
+    margin: 0;
+}
+
+.summary-note {
+    color: var(--cinema-muted);
+    font-size: 11px;
+    line-height: 1.6;
+    margin-top: 17px;
+}
+
+
+/* =========================================
+   CHECKOUT PAGE
+========================================= */
+
+.checkout-card {
+    background: var(--cinema-card);
+    border: 1px solid var(--cinema-border);
+    border-radius: 13px;
+    padding: 30px;
+}
+
+.checkout-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.checkout-card-heading h4 {
+    color: white;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.checkout-card-heading p {
+    color: var(--cinema-muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.checkout-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cinema-gold);
+    background: rgba(232, 184, 91, 0.1);
+    border-radius: 10px;
+    font-size: 22px;
+}
+
+.checkout-hint {
+    display: block;
+    color: var(--cinema-muted);
+    font-size: 11px;
+    margin-top: 9px;
+}
+
+.input-group .cinema-input-icon {
+    color: var(--cinema-gold);
+    background: #0c1422;
+    border-color: #354259;
+}
+
+.checkout-notice {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    padding: 15px;
+    background: rgba(232, 184, 91, 0.07);
+    border: 1px solid rgba(232, 184, 91, 0.2);
+    border-radius: 8px;
+}
+
+.checkout-notice > i {
+    color: var(--cinema-gold);
+    font-size: 22px;
+}
+
+.checkout-notice strong {
+    color: white;
+    font-size: 13px;
+}
+
+.checkout-notice p {
+    color: var(--cinema-muted);
+    font-size: 12px;
+    margin: 4px 0 0;
+    line-height: 1.6;
+}
+
+.checkout-submit {
+    padding: 14px;
+}
+
+.checkout-movie-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--cinema-border);
+}
+
+.checkout-movie-details strong {
+    display: block;
+    color: white;
+    font-size: 13px;
+}
+
+.checkout-movie-details small {
+    display: block;
+    color: var(--cinema-muted);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.checkout-item-total {
+    color: var(--cinema-gold);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.discount-value {
+    color: #65c99a !important;
+}
+
+.applied-discount {
+    color: var(--cinema-muted);
+    font-size: 11px;
+    margin-top: 15px;
+}
+
+.applied-discount i {
+    color: var(--cinema-gold);
+}
+
+.applied-discount strong {
+    color: var(--cinema-gold);
+}
+
+.back-to-cart-link {
+    display: block;
+    color: var(--cinema-muted);
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    margin-top: 25px;
+}
+
+.back-to-cart-link:hover {
+    color: var(--cinema-gold);
+}
+
+
+/* =========================================
+   RECEIPT PAGE
+========================================= */
+
+.receipt-success {
+    margin-bottom: 35px;
+}
+
+.receipt-success-icon {
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: rgba(64, 190, 135, 0.12);
+    border: 1px solid rgba(64, 190, 135, 0.35);
+    color: #65d6a2;
+    font-size: 35px;
+}
+
+.receipt-success h1 {
+    color: white;
+    font-size: 32px;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.receipt-success p {
+    color: var(--cinema-muted);
+    max-width: 600px;
+    margin: 10px auto;
+    line-height: 1.7;
+}
+
+.receipt-paper {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 45px;
+    background: #ffffff;
+    color: #252b36;
+    border-radius: 12px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+}
+
+.receipt-header h2 {
+    color: #172235;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin: 10px 0 5px;
+}
+
+.receipt-header p {
+    color: #7b8492;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.receipt-logo {
+    color: #b98a3e;
+    font-size: 35px;
+}
+
+.receipt-status-badge {
+    display: inline-block;
+    color: #18794e;
+    background: #e9f7ef;
+    border-radius: 20px;
+    padding: 7px 13px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.7px;
+    margin-top: 10px;
+}
+
+.receipt-divider {
+    border-top: 1px dashed #d4d9e1;
+    margin: 25px 0;
+}
+
+.receipt-order-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.receipt-order-info small,
+.receipt-status-section small {
+    display: block;
+    color: #87909e;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.receipt-order-info h5 {
+    color: #172235;
+    font-weight: 800;
+    font-size: 17px;
+    overflow-wrap: anywhere;
+}
+
+.receipt-order-info h6 {
+    color: #394456;
+    font-size: 13px;
+}
+
+.receipt-section-label {
+    display: block;
+    color: #b1843d;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+}
+
+.receipt-detail-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 13px;
+    font-size: 13px;
+}
+
+.receipt-detail-row span {
+    color: #747e8d;
+}
+
+.receipt-detail-row strong {
+    color: #273244;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.receipt-table {
+    margin-bottom: 0;
+}
+
+.receipt-table th {
+    color: #7c8796;
+    background: #f6f7f9;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 13px 10px;
+}
+
+.receipt-table td {
+    color: #293447;
+    border-color: #e9edf2;
+    padding: 15px 10px;
+    font-size: 13px;
+}
+
+.receipt-table td strong {
+    display: block;
+}
+
+.receipt-table td small {
+    display: block;
+    color: #87909e;
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+.receipt-payment {
+    max-width: 430px;
+    margin-left: auto;
+}
+
+.receipt-discount-name {
+    color: #87909e;
+    font-size: 11px;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.receipt-discount-name strong {
+    color: #b1843d;
+}
+
+.receipt-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: #f6f3eb;
+    border: 1px solid #eee4ce;
+    border-radius: 8px;
+    padding: 18px;
+    margin-top: 20px;
+}
+
+.receipt-total span {
+    color: #5c6572;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.receipt-total h2 {
+    color: #a8792d;
+    font-size: 25px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.receipt-status-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.receipt-status-text {
+    display: inline-block;
+    color: #18794e;
+    background: #e9f7ef;
+    border-radius: 5px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.receipt-footer {
+    padding-top: 15px;
+}
+
+.receipt-footer > i {
+    color: #b1843d;
+    font-size: 28px;
+}
+
+.receipt-footer h5 {
+    color: #172235;
+    font-weight: 800;
+    margin-top: 10px;
+}
+
+.receipt-footer p {
+    color: #687384;
+    font-size: 13px;
+}
+
+.receipt-footer small {
+    color: #929baa;
+    font-size: 10px;
+}
+
+.receipt-actions {
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   RESPONSIVE INNER PAGES
+========================================= */
+
+@media (max-width: 768px) {
+
+    .cinema-inner-page {
+        padding-top: 35px;
+        padding-bottom: 45px;
+    }
+
+    .page-heading h1 {
+        font-size: 28px;
+    }
+
+    .cart-item-card {
+        padding: 14px;
+    }
+
+    .cart-movie-poster,
+    .cart-poster-placeholder {
+        height: 145px;
+    }
+
+    .cart-movie-title {
+        font-size: 16px;
+    }
+
+    .cart-item-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cart-item-actions {
+        width: 100%;
+        text-align: left;
+        border-top: 1px solid var(--cinema-border);
+        padding-top: 12px;
+    }
+
+    .cart-item-actions form {
+        text-align: left;
+    }
+
+    .checkout-card {
+        padding: 22px;
+    }
+
+    .receipt-paper {
+        padding: 25px 18px;
+    }
+
+    .receipt-success h1 {
+        font-size: 26px;
+    }
+
+    .receipt-order-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .receipt-total h2 {
+        font-size: 21px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .cart-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cart-movie-poster,
+    .cart-poster-placeholder {
+        height: 120px;
+    }
+
+    .cart-quantity-form {
+        width: 100%;
+    }
+
+    .receipt-paper {
+        padding: 22px 14px;
+    }
+
+    .receipt-header h2 {
+        font-size: 19px;
+    }
+
+    .receipt-status-section {
+        grid-template-columns: 1fr;
+    }
+
+    .receipt-total {
+        padding: 13px;
+    }
+
+}
+
+
+/* =========================================
+   PRINT RECEIPT
+========================================= */
+
+@media print {
+
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    nav,
+    footer,
+    .navbar,
+    .receipt-success,
+    .receipt-actions,
+    .receipt-actions button,
+    .receipt-actions a {
+        display: none !important;
+    }
+
+    .cinema-inner-page {
+        padding: 0 !important;
+    }
+
+    .receipt-paper {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 15mm;
+    }
+
+}
+
+
+/* =========================================
+   CINEMATIC NAVBAR
+========================================= */
+
+.cinema-navbar {
+    background: rgba(9, 14, 27, 0.96);
+    border-bottom: 1px solid rgba(232, 184, 91, 0.18);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+/* BRAND */
+
+.cinema-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #f5f5f5 !important;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1;
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f5d58c, #c89135);
+    color: #111827;
+    border-radius: 12px;
+    font-size: 23px;
+    box-shadow: 0 4px 15px rgba(232, 184, 91, 0.2);
+}
+
+.brand-dot {
+    color: #e8b85b;
+}
+
+.brand-subtitle {
+    display: block;
+    margin-top: 5px;
+    color: #a5afc0;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+}
+
+/* NAV LINKS */
+
+.cinema-navbar .navbar-nav {
+    gap: 10px;
+}
+
+.cinema-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 11px 17px !important;
+    color: #a5afc0 !important;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 9px;
+    transition: all 0.25s ease;
+}
+
+.cinema-nav-link i {
+    font-size: 17px;
+}
+
+.cinema-nav-link:hover,
+.cinema-nav-link:focus {
+    color: #f5d58c !important;
+    background: rgba(232, 184, 91, 0.09);
+}
+
+/* CART BADGE */
+
+.cinema-cart-link {
+    position: relative;
+}
+
+.cinema-cart-badge {
+    min-width: 21px;
+    height: 21px;
+    padding: 0 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #e8b85b;
+    color: #111827;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* MOBILE TOGGLER */
+
+.cinema-toggler {
+    border: 1px solid rgba(232, 184, 91, 0.35);
+    color: #e8b85b;
+    padding: 5px 10px;
+    font-size: 25px;
+    box-shadow: none !important;
+}
+
+.cinema-toggler:focus {
+    box-shadow: 0 0 0 3px rgba(232, 184, 91, 0.12) !important;
+}
+
+/* MOBILE NAVIGATION */
+
+@media (max-width: 991px) {
+
+    .cinema-navbar .navbar-collapse {
+        padding-top: 15px;
+    }
+
+    .cinema-navbar .navbar-nav {
+        align-items: stretch !important;
+        gap: 5px;
+    }
+
+    .cinema-nav-link {
+        justify-content: flex-start;
+        padding: 13px 15px !important;
+    }
+
+}
+
+
+/* =========================================
+   MULTI-MOVIE SELECTION
+   Single Add Selected Movies Button
+========================================= */
+
+/* Movie catalog card content */
+
+.movie-card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 21px;
+    height: calc(100% - 350px);
+}
+
+.movie-card-body .movie-title {
+    color: var(--cinema-white);
+    font-size: 21px;
+    font-weight: 800;
+    margin-bottom: 11px;
+}
+
+.movie-card-body .movie-description {
+    color: var(--cinema-muted);
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 67px;
+    margin-bottom: 18px;
+}
+
+/* Movie genre badge */
+
+.movie-genre-badge {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+
+    padding: 6px 12px;
+
+    background: rgba(9, 14, 27, 0.9);
+    color: var(--cinema-gold-light);
+
+    border: 1px solid rgba(232, 184, 91, 0.3);
+    border-radius: 50px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* Movie card details */
+
+.movie-card-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: auto;
+    padding-top: 17px;
+
+    border-top: 1px solid var(--cinema-border);
+}
+
+.movie-price {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.movie-price span {
+    color: var(--cinema-muted);
+    font-size: 11px;
+}
+
+.movie-price strong {
+    color: var(--cinema-gold);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Quantity selection */
+
+.quantity-selection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.quantity-selection .form-label {
+    color: var(--cinema-muted);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.quantity-selection small {
+    color: var(--cinema-subtle, #758197);
+    font-size: 11px;
+}
+
+.cinema-quantity-input {
+    width: 100px;
+    padding: 10px 12px;
+
+    background: #0d1626;
+    color: var(--cinema-white);
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 8px;
+}
+
+.cinema-quantity-input:focus {
+    background: #0d1626;
+    color: white;
+
+    border-color: var(--cinema-gold);
+
+    box-shadow: 0 0 0 3px rgba(232, 184, 91, 0.12);
+}
+
+/* Single Add Selected Movies area */
+
+.selected-movies-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 25px 28px;
+
+    background: var(--cinema-surface);
+
+    border: 1px solid rgba(232, 184, 91, 0.25);
+    border-radius: 13px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.selected-movies-message {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.selected-movies-message > i {
+    color: var(--cinema-gold);
+    font-size: 30px;
+}
+
+.selected-movies-message strong {
+    color: var(--cinema-white);
+    font-size: 16px;
+}
+
+.selected-movies-message p {
+    color: var(--cinema-muted);
+    font-size: 13px;
+    margin: 4px 0 0;
+}
+
+/* Add button */
+
+.add-selected-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 13px 25px;
+
+    background: linear-gradient(
+        135deg,
+        var(--cinema-gold-light),
+        #c89135
+    );
+
+    color: #111827;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    transition: all 0.25s ease;
+}
+
+.add-selected-button:hover {
+    background: var(--cinema-gold-light);
+    color: #111827;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 20px rgba(232, 184, 91, 0.2);
+}
+
+.add-selected-button:active {
+    transform: translateY(0);
+}
+
+/* Movie catalog heading compatibility */
+
+.page-heading .section-eyebrow {
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.page-heading h2 {
+    color: var(--cinema-white);
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.page-heading p {
+    color: var(--cinema-muted);
+    font-size: 14px;
+}
+
+/* Hero content compatibility */
+
+.cinema-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    padding: 65px 0;
+}
+
+.cinema-hero-content h1 {
+    color: white;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1.12;
+    margin-bottom: 20px;
+}
+
+.cinema-hero-content h1 span {
+    display: block;
+    color: var(--cinema-gold);
+}
+
+.cinema-hero-content p {
+    max-width: 550px;
+    color: #c2c9d5;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 27px;
+}
+
+/* Catalog responsive adjustments */
+
+@media (max-width: 768px) {
+
+    .movie-card-body {
+        height: auto;
+    }
+
+    .movie-card-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .quantity-selection {
+        width: 100%;
+    }
+
+    .cinema-quantity-input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .selected-movies-action {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .selected-movies-message {
+        align-items: flex-start;
+    }
+
+    .add-selected-button {
+        width: 100%;
+    }
+
+    .cinema-hero-content {
+        padding: 55px 0;
+    }
+
+    .cinema-hero-content h1 {
+        font-size: 40px;
+    }
+
+    .page-heading h2 {
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .movie-card-body {
+        padding: 16px;
+    }
+
+    .movie-card-bottom {
+        gap: 18px;
+    }
+
+    .selected-movies-action {
+        padding: 18px;
+    }
+
+    .selected-movies-message > i {
+        font-size: 25px;
+    }
+
+    .cinema-hero-content h1 {
+        font-size: 34px;
+    }
+}
+
+/* ==========================================
+   SWEETALERT2 - CINEMA THEME
+========================================== */
+
+/* Main SweetAlert popup */
+.cinema-swal-popup {
+    background: #111a2b !important;
+    border: 1px solid rgba(232, 184, 91, 0.25) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Popup title */
+.cinema-swal-title {
+    color: #e8b85b !important;
+    font-weight: 700 !important;
+}
+
+/* Popup description */
+.swal2-html-container {
+    color: #c4cbd6 !important;
+}
+
+/* Confirm button */
+.cinema-swal-confirm {
+    background: #e8b85b !important;
+    color: #111a2b !important;
+    font-weight: 700 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    padding: 10px 20px !important;
+}
+
+.cinema-swal-confirm:hover {
+    background: #f2ca78 !important;
+}
+
+/* Cancel button */
+.cinema-swal-cancel {
+    background: #263b5c !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    border: none !important;
+    padding: 10px 20px !important;
+}
+
+.cinema-swal-cancel:hover {
+    background: #344e75 !important;
+}
+
+/* Warning icon */
+.swal2-icon.swal2-warning {
+    border-color: #e8b85b !important;
+    color: #e8b85b !important;
+}
+
+/* Success icon */
+.swal2-icon.swal2-success {
+    border-color: #e8b85b !important;
+    color: #e8b85b !important;
+}
+
+.swal2-icon.swal2-success [class^="swal2-success-line"] {
+    background-color: #e8b85b !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+    border-color: rgba(232, 184, 91, 0.3) !important;
+}
+
+/* Error icon */
+.swal2-icon.swal2-error {
+    border-color: #e8b85b !important;
+}
+
+.swal2-icon.swal2-error [class^="swal2-x-mark-line"] {
+    background-color: #e8b85b !important;
+}
+
+/* Toast notification */
+.swal2-popup.swal2-toast {
+    background: #111a2b !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(232, 184, 91, 0.25) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Toast message */
+.swal2-popup.swal2-toast .swal2-title,
+.swal2-popup.swal2-toast .swal2-html-container {
+    color: #ffffff !important;
+}
+
+/* Toast progress bar */
+.swal2-timer-progress-bar {
+    background: #e8b85b !important;
+}
+
+
+
+
+
