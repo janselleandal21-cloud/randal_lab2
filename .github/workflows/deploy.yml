@@ -20,17 +20,19 @@ jobs:
         pwd
         whoami
 
-    - name: Deploy to Web Directory
+    - name: Deploy Project Files to Web Directory
       run: |
-        echo "Deploying files to randal_lab2..."
+        echo "Copying all project folders and files to web root..."
         sudo mkdir -p /var/www/html/randal/randal_lab2
-        # Kopyahin ang lahat ng laman patungo sa tamang subfolder
-        sudo cp -r . /var/www/html/randal/randal_lab2/
-        # Ayusin ang permissions para mabasa ng Apache
+        # Kopyahin ang lahat maliban sa .git at .github folders para malinis ang deployment
+        sudo rsync -av --exclude='.git' --exclude='.github' ./ /var/www/html/randal/randal_lab2/
+        
+        # Ayusin ang ownership at permissions para sa Apache at user randal
         sudo chown -R randal:www-data /var/www/html/randal/randal_lab2/
-        sudo chmod -R 755 /var/www/html/randal/randal_lab2/
+        sudo find /var/www/html/randal/randal_lab2/ -type d -exec chmod 755 {} \;
+        sudo find /var/www/html/randal/randal_lab2/ -type f -exec chmod 644 {} \;
 
     - name: Verify Deployment
       run: |
-        echo "Deployment complete!"
+        echo "Deployment complete! Listing web directory structure:"
         ls -la /var/www/html/randal/randal_lab2/
