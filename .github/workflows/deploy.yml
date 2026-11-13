@@ -1,4 +1,4 @@
-name: Local Server CI/CD
+name: Local Server Docker CI/CD
 
 on:
   push:
@@ -20,19 +20,19 @@ jobs:
           pwd
           whoami
 
-      - name: Deploy PHP Project to Web Directory
+      - name: Build and Restart Docker Container
         run: |
-          echo "Syncing all project files and folders to web root..."
-          mkdir -p /var/www/html/randal/randal_lab2
+          echo "Building new Docker image for randal..."
+          docker build -t randal-php-app .
           
-          # Sync project files directly without sudo password prompt
-          rsync -av --exclude='.git' --exclude='.github' ./ /var/www/html/randal/randal_lab2/
+          echo "Stopping and removing old container if it exists..."
+          docker stop randal-app-container || true
+          docker rm randal-app-container || true
           
-          # Ensure correct permissions for Apache www-data group
-          find /var/www/html/randal/randal_lab2/ -type d -exec chmod 755 {} \;
-          find /var/www/html/randal/randal_lab2/ -type f -exec chmod 644 {} \;
+          echo "Starting fresh container mapped to port 8080..."
+          docker run -d --name randal-app-container -p 8080:80 randal-php-app
 
       - name: Verify Deployment
         run: |
-          echo "Deployment complete!"
-          ls -la /var/www/html/randal/randal_lab2/
+          echo "Docker container deployment complete!"
+          docker ps | grep randal-app-container
