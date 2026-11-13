@@ -68,7 +68,7 @@ $movies = [
 
     [
         "id" => 7,
-        "title" => "Hello World",
+        "title" => "World",
         "genre" => "Animation",
         "description" => "A young musician enters the Land of the Dead and discovers the importance of family.",
         "duration" => "1h 45m",
