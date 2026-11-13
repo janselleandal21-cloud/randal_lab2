@@ -23,15 +23,15 @@ jobs:
     - name: Deploy PHP Project to Web Directory
       run: |
         echo "Syncing all project files and folders to web root..."
-        mkdir -p /var/www/html/randal/randal_lab2
+        sudo mkdir -p /var/www/html/randal/randal_lab2
         
-        # Sync project files without using sudo
-        rsync -av --exclude='.git' --exclude='.github' ./ /var/www/html/randal/randal_lab2/
+        # Sync project files using passwordless sudo
+        sudo rsync -av --exclude='.git' --exclude='.github' ./ /var/www/html/randal/randal_lab2/
         
-        # Adjust permissions safely
-        chown -R randal:www-data /var/www/html/randal/randal_lab2/
-        find /var/www/html/randal/randal_lab2/ -type d -exec chmod 755 {} \;
-        find /var/www/html/randal/randal_lab2/ -type f -exec chmod 644 {} \;
+        # Adjust ownership and permissions for Apache
+        sudo chown -R randal:www-data /var/www/html/randal/randal_lab2/
+        sudo find /var/www/html/randal/randal_lab2/ -type d -exec chmod 755 {} \;
+        sudo find /var/www/html/randal/randal_lab2/ -type f -exec chmod 644 {} \;
 
     - name: Verify Deployment
       run: |
